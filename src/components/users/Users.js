@@ -18,7 +18,7 @@ import PropTypes from 'prop-types'
      }
 }
 
-Users.PropTypes = {
+Users.propTypes = {
     Users: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
 }
