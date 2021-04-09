@@ -7,6 +7,9 @@ import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
 import About from './components/pages/About';
 import axios from 'axios';
+
+import GithubState from './context/github/GithubState';
+
 import './App.css';
 
 const App = () => {
@@ -17,7 +20,7 @@ const App = () => {
   const [alert, setAlert] = useState(null);
 
   // search github users
-   const searchUsers = async (text) => {
+  const searchUsers = async (text) => {
     setLoading(true);
 
     const res = await axios.get(
@@ -41,7 +44,7 @@ const App = () => {
   };
 
   //Get users Repos
-   const getUserRepos = async (username) => {
+  const getUserRepos = async (username) => {
     setLoading(true);
 
     const res = await axios.get(
@@ -60,11 +63,12 @@ const App = () => {
 
   //set Alert
   const showAlert = (msg, type) => {
-    setAlert({ msg, type});
+    setAlert({ msg, type });
     setTimeout(() => setAlert(null), 5000);
   };
 
-    return (
+  return (
+    <GithubState>
       <Router>
         <div className="App">
           <Navbar />
@@ -105,7 +109,8 @@ const App = () => {
           </div>
         </div>
       </Router>
-    );
-}
+    </GithubState>
+  );
+};
 
 export default App;
