@@ -10,7 +10,7 @@ import {
   GET_REPOS,
 } from '../types';
 
-const GithubState = (props) => {
+const GithubState = props => {
   const intialState = {
     users: [],
     user: {},
